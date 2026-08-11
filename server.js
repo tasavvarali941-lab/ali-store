@@ -2,7 +2,7 @@ const express=require("express"), path=require("path"), fs=require("fs");
 const multer=require("multer"), bcrypt=require("bcryptjs"), jwt=require("jsonwebtoken");
 const Database=require("better-sqlite3"), cors=require("cors");
 const app=express(), PORT=process.env.PORT||3000, SECRET=process.env.JWT_SECRET||"CHANGE_THIS_SECRET";
-const ROOT=path.join(__dirname,".."), UP=path.join(ROOT,"uploads");
+const ROOT=__dirname, UP=path.join(ROOT,"uploads");
 for(const d of ["apks","icons","screenshots"])fs.mkdirSync(path.join(UP,d),{recursive:true});
 const db=new Database(path.join(ROOT,"ali-store.db"));
 db.exec(`CREATE TABLE IF NOT EXISTS admins(id INTEGER PRIMARY KEY,email TEXT UNIQUE,password TEXT);
